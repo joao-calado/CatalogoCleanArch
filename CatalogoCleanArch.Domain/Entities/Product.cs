@@ -22,7 +22,7 @@ public sealed class Product : Entity
 
     public Product(int id, string name, string description, decimal price, int stock, string image)
     {
-        DomainExceptionValidation.When(id < 0, "Invalid Id Value");
+        DomainExceptionValidation.When(id < 0, "Invalid Id Value.");
         Id = id;
         ValidateDomain(name, description, price, stock, image);
     }
@@ -39,7 +39,7 @@ public sealed class Product : Entity
            "Invalid name. Name is required.");
 
         DomainExceptionValidation.When(name.Length < 3,
-            "Invalid name, too short, minimum 3 characteres.");
+            "Invalid name, too short, minimum 3 characters.");
 
         DomainExceptionValidation.When(string.IsNullOrEmpty(description),
            "Invalid description. Description is required.");
@@ -47,12 +47,12 @@ public sealed class Product : Entity
         DomainExceptionValidation.When(description.Length < 5,
             "Invalid description, too short, minimum 5 characteres.");
 
-        DomainExceptionValidation.When(price < 0, "Invalid price value");
+        DomainExceptionValidation.When(price < 0, "Invalid price value.");
 
-        DomainExceptionValidation.When(stock < 0, "Invalid stock value");
+        DomainExceptionValidation.When(stock < 0, "Invalid stock value.");
 
-        DomainExceptionValidation.When(image.Length > 250, 
-            "Invalid image name, too long, maximum 250 caracteres");
+        DomainExceptionValidation.When(image?.Length > 250,
+            "Invalid image name, too long, maximum 250 characters.");
 
         Name = name;
         Description = description;

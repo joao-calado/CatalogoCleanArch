@@ -18,7 +18,7 @@ public sealed class Category : Entity
 
     public Category(int id,string name)
     {
-        DomainExceptionValidation.When(id < 0, "Invalid Id Value");
+        DomainExceptionValidation.When(id < 0, "Invalid Id Value.");
         Id = id;
         ValidateDomain(name);
     }
