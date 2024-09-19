@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CatalogoCleanArch.Application\CatalogoCleanArch.Application.csproj" />
     <ProjectReference Include="..\CatalogoCleanArch.Domain\CatalogoCleanArch.Domain.csproj" />
     <ProjectReference Include="..\CatalogoCleanArch.Infra.Data\CatalogoCleanArch.Infra.Data.csproj" />
