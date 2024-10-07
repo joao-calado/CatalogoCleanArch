@@ -1,9 +1,11 @@
-﻿using CatalogoCleanArch.Application.DTOs;
+﻿    using CatalogoCleanArch.Application.DTOs;
 using CatalogoCleanArch.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CatalogoCleanArch.WebUI.Controllers;
 
+[Authorize]
 public class CategoriesController : Controller
 {
     private readonly ICategoryService _categoryService;

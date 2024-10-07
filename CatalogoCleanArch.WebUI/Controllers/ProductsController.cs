@@ -1,5 +1,6 @@
 ﻿using CatalogoCleanArch.Application.DTOs;
 using CatalogoCleanArch.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -74,7 +75,8 @@ public class ProductsController : Controller
         return View(productDto);
     }
 
-    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    [HttpGet()]
     public async Task<IActionResult> Delete (int? id)
     {
         if (id == null) return NotFound();
