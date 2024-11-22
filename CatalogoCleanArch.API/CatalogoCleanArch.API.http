@@ -1,0 +1,6 @@
+@CatalogoCleanArch.API_HostAddress = http://localhost:5232
+
+GET {{CatalogoCleanArch.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
