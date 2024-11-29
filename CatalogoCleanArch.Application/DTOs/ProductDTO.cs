@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace CatalogoCleanArch.Application.DTOs;
 
@@ -42,6 +43,7 @@ public class ProductDTO
     [DisplayName("Product Image")]
     public string Image { get; set; }
 
+    [JsonIgnore]
     public Category? Category { get; set; }
 
     [DisplayName("Categories")]

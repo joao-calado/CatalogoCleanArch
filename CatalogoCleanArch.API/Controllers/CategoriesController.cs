@@ -53,4 +53,37 @@ public class CategoriesController : ControllerBase
         return new CreatedAtRouteResult("GetCategory", new { id = categoryDto.Id}, categoryDto);
     }
 
+    [HttpPut]
+    public async Task<ActionResult> Put(int id, [FromBody] CategoryDTO categoryDto)
+    {
+        if (categoryDto == null)
+        {
+            return BadRequest("JSON não informado");
+        }
+
+        if (id != categoryDto.Id)
+        {
+            return BadRequest("Id divergente");
+        }
+
+        await _categoryService.Update(categoryDto);
+
+        return Ok(categoryDto);
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<CategoryDTO>> Delete(int id)
+    {
+        var category = await _categoryService.GetById(id);
+
+        if (category == null)
+        {
+            return NotFound("Category not found");
+        }
+
+        await _categoryService.Delete(id);
+
+        return Ok(category);
+    }
+
 }
