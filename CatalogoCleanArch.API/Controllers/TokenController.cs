@@ -23,6 +23,24 @@ public class TokenController : ControllerBase
         _configuration = configuration;
     }
 
+    [HttpPost("CreateUser")]
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public async Task<ActionResult> CreateUser([FromBody] LoginModel userInfo)
+    {
+        var result = await _authentication.RegisterUser(userInfo.Email, userInfo.Password);
+
+        if (result)
+        {
+            //return GenerateToken(userInfo);
+            return Ok($"User {userInfo.Email} was created successfuly");
+        }
+        else
+        {
+            ModelState.AddModelError(string.Empty, "Invalid login attempt");
+            return BadRequest(ModelState);
+        }
+    }
+
     [HttpPost("LoginUser")]
     public async Task<ActionResult<UserToken>> Login([FromBody] LoginModel userInfo)
     {
