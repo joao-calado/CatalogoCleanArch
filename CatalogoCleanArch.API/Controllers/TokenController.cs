@@ -1,5 +1,6 @@
 ﻿using CatalogoCleanArch.API.Models;
 using CatalogoCleanArch.Domain.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -25,6 +26,7 @@ public class TokenController : ControllerBase
 
     [HttpPost("CreateUser")]
     [ApiExplorerSettings(IgnoreApi = true)]
+    [Authorize]
     public async Task<ActionResult> CreateUser([FromBody] LoginModel userInfo)
     {
         var result = await _authentication.RegisterUser(userInfo.Email, userInfo.Password);
@@ -41,6 +43,7 @@ public class TokenController : ControllerBase
         }
     }
 
+    [AllowAnonymous]
     [HttpPost("LoginUser")]
     public async Task<ActionResult<UserToken>> Login([FromBody] LoginModel userInfo)
     {
