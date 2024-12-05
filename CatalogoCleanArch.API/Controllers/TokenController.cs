@@ -83,7 +83,7 @@ public class TokenController : ControllerBase
         // Gerar o token
         JwtSecurityToken token = new JwtSecurityToken(
                 // Emissor
-                issuer: _configuration["Jwt:SecretKey"],
+                issuer: _configuration["Jwt:Issuer"],
                 // Audiencia
                 audience: _configuration["Jwt:Audience"],
                 // Claims
